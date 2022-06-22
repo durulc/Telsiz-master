@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace FiciTakip.Arayuz.Request
+﻿namespace FiciTakip.Arayuz.Request
 {
     public class uretimsiparisListeleRequest:OrtakRequest
     {
-       
+      public string zepc { get; set; }
     }
 }

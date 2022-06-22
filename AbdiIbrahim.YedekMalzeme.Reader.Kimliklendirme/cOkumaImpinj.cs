@@ -131,21 +131,28 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kimliklendirme
 
                                 else
                                 {
-                                    new tbl04okuma(session)
+                                    tbl05okumadevam _Ayar = session.Query<tbl05okumadevam>().FirstOrDefault(w => w.sirano.Equals("1") && w.deger.Equals("1"));
+
+                                    if (_Ayar != null)
                                     {
-                                        aktif=1,
-                                        createuser="",
-                                        databasekayitzamani=DateTime.Now,
-                                        gelenepc=item.Key,
-                                        guncellemezamani=DateTime.Now,
-                                        id=Guid.NewGuid().ToString(),
-                                        lastupdateuser=""
-                                    }.Save();
+                                        new tbl04okuma(session)
+                                        {
+                                            aktif = 1,
+                                            createuser = "",
+                                            databasekayitzamani = DateTime.Now,
+                                            gelenepc = item.Key,
+                                            guncellemezamani = DateTime.Now,
+                                            id = Guid.NewGuid().ToString(),
+                                            lastupdateuser = ""
+                                        }.Save();
 
-                                   session.ExecuteNonQuery("update tblurun set gecisdurum = '1' where etiketkod = '"+ item.Key + "'");
+                                        session.ExecuteNonQuery("update tblurun set gecisdurum = '1' where etiketkod = '" + item.Key + "'");
+                                    }
+                                    else
+                                    {
+                                       
+                                    }
                                 }
-
-                               
                             }
 
 

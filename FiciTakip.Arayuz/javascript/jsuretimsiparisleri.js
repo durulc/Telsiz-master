@@ -9,7 +9,38 @@ $(document).ready(function () {
 
 function jsBaslat()
 {
-    v_Devam = true;
+
+    $.ajax({
+        type: "POST",
+        url: "api/Baslat",
+        data: JSON.stringify
+            ({
+                zdeger: '1'
+            }),
+
+        contentType: "application/json; charset=utf-8",
+
+        dataType: "json",
+
+        beforeSend: function () {
+
+        },
+        error: function (request, status, error) {
+
+            UyariMesajiVer('Sistemsel bir hata oluştu');
+        },
+        success: function (msg)
+        {           
+        },
+
+        complete: function () {
+            v_Devam = true;
+            setTimeout("fn_DegerleriListele('1')", 250);
+        }
+    });
+
+
+    
 }
 
 

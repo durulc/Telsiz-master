@@ -7,6 +7,25 @@ namespace FiciTakip.Arayuz.Manager
     public class uretimsiparisleriController : ApiController
     {
         [HttpPost]
+        [Route("api/Degistir")]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+        [Authorize(Roles = "roleadmin")]
+        public uretimsiparisListeleResponse Degistir(uretimsiparisListeleRequest v_Gelen)
+        {
+            return new uretimsiparisleriManager().fn_Degistir(v_Gelen);
+        }
+
+        [HttpPost]
+        [Route("api/Baslat")]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+        [Authorize(Roles = "roleadmin")]
+        public uretimsiparisListeleResponse Baslat(uretimsiparisListeleRequest v_Gelen)
+        {
+            return new uretimsiparisleriManager().fn_Baslat(v_Gelen);
+        }
+
+
+        [HttpPost]
         [Route("api/BekleyenListele")]
         [System.Web.Mvc.ValidateAntiForgeryToken]
         [Authorize(Roles = "roleadmin")]

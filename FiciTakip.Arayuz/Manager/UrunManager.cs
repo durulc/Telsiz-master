@@ -62,5 +62,37 @@ namespace FiciTakip.Arayuz.Manager
             }
             return _cevap;
         }
+
+        internal UrunKaydetResponse fn_UrunListele(UrunKaydetRequest v_Gelen)
+        {
+            UrunKaydetResponse _Cevap = new UrunKaydetResponse();
+
+            string _TabloYazisi = "";
+
+            try
+            {
+                using (Session session = XpoManager.Instance.GetNewSession())
+                {
+                    List<tblurun> _Liste = session.Query<tblurun>().OrderBy(w=>w.etiketkod).ToList();
+
+                    foreach (var item in _Liste)
+                    {
+                        _TabloYazisi += "<tr>";
+                        _TabloYazisi += "<td>"+item.etiketkod+"</td>";
+                        string _Deger = item.etiketkod.Trim().ToString();
+                        
+                        _TabloYazisi += "<td> <img src = \"resimler/"+ item.aktif + ".png\" style='cursor:pointer;' onclick=fn_Degistir('"+ _Deger + "'); /></td>";                      
+                        _TabloYazisi += "</tr>";
+                    }    
+                }
+
+                _Cevap.zAciklama = _TabloYazisi;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _Cevap;
+        }
     }
 }

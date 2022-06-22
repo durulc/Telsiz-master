@@ -372,6 +372,7 @@
     <Content Include="Global.asax" />
     <Content Include="harita.aspx" />
     <Content Include="harita_01.aspx" />
+    <Content Include="javascript\all.min.css" />
     <Content Include="javascript\formsecim.js" />
     <Content Include="javascript\GenelIslemler.js" />
     <Content Include="javascript\jsetikettanim.js" />
@@ -3358,6 +3359,7 @@
     <Folder Include="theme\vendors\waypoints\test\fixtures\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\fa-solid-900.woff2" />
     <None Include="packages.config" />
     <Content Include="theme\assets\vendors\base\fonts\flaticon\Flaticon.eot" />
     <Content Include="theme\assets\vendors\base\fonts\flaticon\Flaticon.ttf" />
@@ -4335,6 +4337,8 @@
     <Content Include="theme\vendors\wnumb\README.md" />
     <Content Include="Site1.Master" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="webfonts\fa-solid-900.ttf" />
+    <Content Include="webfonts\fa-solid-900.woff2" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="theme\vendors\moment\moment.d.ts" />

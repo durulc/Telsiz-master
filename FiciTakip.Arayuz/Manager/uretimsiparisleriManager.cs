@@ -12,6 +12,80 @@ namespace FiciTakip.Arayuz.Manager
 {
     public class uretimsiparisleriManager : ApiController
     {
+        internal uretimsiparisListeleResponse fn_Degistir(uretimsiparisListeleRequest v_Gelen)
+        {
+            uretimsiparisListeleResponse _Cevap = new uretimsiparisListeleResponse();
+
+            try
+            {
+                using (Session session = XpoManager.Instance.GetNewSession())
+                {
+                    tblurun _Liste = session.Query<tblurun>().FirstOrDefault(w => w.etiketkod.Equals(v_Gelen.zepc));
+
+                    if (_Liste != null)
+                    {
+                        if (_Liste.aktif.ToString().Equals("1"))
+                        {
+                            _Liste.aktif = 0;
+                            _Liste.Save();
+                        }
+                        else
+                        {
+                            _Liste.aktif = 1;
+                            _Liste.Save();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return _Cevap;
+        }
+
+
+        internal uretimsiparisListeleResponse fn_Baslat(uretimsiparisListeleRequest v_Gelen)
+        {
+            uretimsiparisListeleResponse _Cevap = new uretimsiparisListeleResponse();
+
+            try
+            {
+                using (Session session = XpoManager.Instance.GetNewSession())
+                {
+                    tbl05okumadevam _Ayar = session.Query<tbl05okumadevam>().FirstOrDefault(w => w.sirano.Equals("1"));
+
+                    if (_Ayar == null)
+                    {
+                        new tbl05okumadevam(session)
+                        {
+                            sirano = "1",
+                            aktif = 1,
+                            createuser = "",
+                            databasekayitzamani = DateTime.Now,
+                            deger = "1",
+                            guncellemezamani = DateTime.Now,
+                            id = Guid.NewGuid().ToString(),
+                            lastupdateuser = ""
+                        }.Save();
+                    }
+                    else
+                    {
+                        _Ayar.deger = "1";
+                        _Ayar.Save();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _Cevap;
+        }
+
+       
+
         internal uretimsiparisListeleResponse fn_uretimsiparisListele(uretimsiparisListeleRequest v_Gelen)
         {
             uretimsiparisListeleResponse _Cevap = new uretimsiparisListeleResponse();
@@ -88,6 +162,28 @@ namespace FiciTakip.Arayuz.Manager
                 {
                     session.ExecuteNonQuery("update tblurun set gecisdurum = '0'");
                     session.ExecuteNonQuery("delete from tbl04okuma");
+
+                    tbl05okumadevam _Ayar = session.Query<tbl05okumadevam>().FirstOrDefault(w => w.sirano.Equals("1"));
+
+                    if (_Ayar == null)
+                    {
+                        new tbl05okumadevam(session)
+                        {
+                            sirano = "1",
+                            aktif = 1,
+                            createuser = "",
+                            databasekayitzamani = DateTime.Now,
+                            deger = "0",
+                            guncellemezamani = DateTime.Now,
+                            id = Guid.NewGuid().ToString(),
+                            lastupdateuser = ""
+                        }.Save();
+                    }
+                    else
+                    {
+                        _Ayar.deger = "0";
+                        _Ayar.Save();
+                    }
                 }
             }
             catch (Exception ex)
