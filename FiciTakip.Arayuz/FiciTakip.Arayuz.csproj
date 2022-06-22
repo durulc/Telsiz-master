@@ -213,6 +213,13 @@
     <Compile Include="ekipmantiptanim.aspx.designer.cs">
       <DependentUpon>ekipmantiptanim.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ekle.aspx.cs">
+      <DependentUpon>ekle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ekle.aspx.designer.cs">
+      <DependentUpon>ekle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="error\Forbidden.aspx.cs">
       <DependentUpon>Forbidden.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -353,6 +360,7 @@
     <Content Include="database.aspx" />
     <Content Include="default.aspx" />
     <Content Include="ekipmantiptanim.aspx" />
+    <Content Include="ekle.aspx" />
     <Content Include="error\Forbidden.aspx" />
     <Content Include="error\InternalError.aspx" />
     <Content Include="error\PageNotFound.aspx" />
@@ -371,6 +379,7 @@
     <Content Include="javascript\jstesistanim.js" />
     <Content Include="javascript\jsuretimsiparisleri.js" />
     <Content Include="javascript\sweetalert.min.js" />
+    <Content Include="javascript\webfont.js" />
     <Content Include="login.aspx" />
     <Content Include="resimler\0.png" />
     <Content Include="resimler\1.png" />

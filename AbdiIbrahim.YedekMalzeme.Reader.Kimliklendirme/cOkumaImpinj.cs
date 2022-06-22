@@ -141,6 +141,8 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kimliklendirme
                                         id=Guid.NewGuid().ToString(),
                                         lastupdateuser=""
                                     }.Save();
+
+                                   session.ExecuteNonQuery("update tblurun set gecisdurum = '1' where etiketkod = '"+ item.Key + "'");
                                 }
 
                                
@@ -287,7 +289,6 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kimliklendirme
             try
             {
 
-                _LogDosyasi.Info("Servis Başladı.");
                 foreach (Tag tag in report)
                 {
                     _OkumaListesi.Add(new ReadView() { _Epc = tag.Epc.ToString().Replace(" ", ""), _Zaman = DateTime.Now });
@@ -306,7 +307,7 @@ namespace AbdiIbrahim.YedekMalzeme.Reader.Kimliklendirme
                         _LogDosyasi.Info(ex.ToString());
                     }
 
-                    //_LogDosyasi.Info("EPC : " + tag.Epc + " Timestamp : " + tag.LastSeenTime + "");
+                    _LogDosyasi.Info("EPC : " + tag.Epc + " Timestamp : " + tag.LastSeenTime + "");
                 }
             }
             catch (Exception ex)

@@ -99,6 +99,7 @@
     <Compile Include="EntityFramework\tbl03kapireader.cs" />
     <Compile Include="EntityFramework\tbl03urunform.cs" />
     <Compile Include="EntityFramework\tbl04okuma.cs" />
+    <Compile Include="EntityFramework\tbl05okumadevam.cs" />
     <Compile Include="EntityFramework\tblhata.cs" />
     <Compile Include="EntityFramework\tblkapigecis.cs" />
     <Compile Include="EntityFramework\tblloginlog.cs" />
